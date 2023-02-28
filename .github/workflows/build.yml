@@ -38,4 +38,10 @@ jobs:
             cmake ..
             make
           fi
+      - name: Check for build artifacts
+        run: |
+          if [ ! -f build/my_executable ]; then
+            echo "Build failed on ${{ matrix.os }} with ${{ matrix.compiler }}"
+            exit 1
+          fi
          
