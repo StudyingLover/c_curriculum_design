@@ -1,6 +1,8 @@
 .idea
 cmake-build-debug
 cmake-build-debug-
+CMakeFiles
+build
 test.c
 temp.c
 config

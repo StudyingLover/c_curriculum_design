@@ -6,7 +6,7 @@
 #include <string.h>
 #include <conio.h>
 #include "main.h"
-
+#include "log/log.h"
 void search_by_id(struct node *head, int id) {
     struct node *current = head;
     int found = 0;

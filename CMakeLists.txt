@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.20)
 project(c_curriculum_design)
 
 # 将头文件目录添加到搜索路径中
