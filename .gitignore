@@ -1,0 +1,7 @@
+.idea
+cmake-build-debug
+cmake-build-debug-
+test.c
+temp.c
+config
+readme.pdf
