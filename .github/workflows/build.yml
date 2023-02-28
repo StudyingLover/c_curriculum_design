@@ -1,4 +1,4 @@
-name: Build
+name: Build and Push
 
 on:
   push:
@@ -16,10 +16,12 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
-      - name: Set up CMake 3.20
-        uses: Kitware/setup-cmake@v1
         with:
-          cmake-version: 3.20
+          ref: master
+      - name: Install CMake 3.20
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake
       - name: Create build directory
         run: mkdir build
       - name: Configure build
@@ -28,14 +30,13 @@ jobs:
         run: cmake --build build
       - name: Move executable to out directory
         run: mv build/my_executable out/
-  push_out_directory:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Push Out Directory to Master
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "Update out directory"
-          git push
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: GitHub Actions
+          author_email: actions@github.com
+          message: Update out directory
+          add: out
+          force: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
