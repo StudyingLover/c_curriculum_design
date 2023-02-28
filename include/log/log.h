@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
 #include "../main.h"
 void print_drug(struct drug d);
 #endif //C_CURRICULUM_DESIGN_LOG_H
