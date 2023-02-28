@@ -6,27 +6,27 @@
 #include <string.h>
 #include "main.h"
 
-void get_hidden_input(char *str, int max_length) {
-    int i = 0;
-    char ch;
-
-    while ((ch = getch()) != '\r' && i < max_length - 1) {
-        if (ch == '\b') {
-            if (i > 0) {
-                i--;
-                putchar('\b');
-                putchar(' ');
-                putchar('\b');
-            }
-        } else {
-            str[i] = ch;
-            putchar('*');
-            i++;
-        }
-    }
-    str[i] = '\0';
-    putchar('\n');
-}
+//void get_hidden_input(char *str, int max_length) {
+//    int i = 0;
+//    char ch;
+//
+//    while ((ch = getch()) != '\r' && i < max_length - 1) {
+//        if (ch == '\b') {
+//            if (i > 0) {
+//                i--;
+//                putchar('\b');
+//                putchar(' ');
+//                putchar('\b');
+//            }
+//        } else {
+//            str[i] = ch;
+//            putchar('*');
+//            i++;
+//        }
+//    }
+//    str[i] = '\0';
+//    putchar('\n');
+//}
 
 int login()
 {
