@@ -10,30 +10,32 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
         with:
           ref: master
-      - name: Install CMake 3.20
+      - name: Get CMake
+        uses: symbitic/install-cmake@master
+      - name: build
         run: |
-          sudo apt-get update
-          sudo apt-get install -y cmake
-      - name: Create build directory
-        run: mkdir build
-      - name: Configure build
-        run: cmake -B build
-      - name: Build project
-        run: cmake --build build
-      - name: Move executable to out directory
-        run: mv build/c_curriculum_design out/
-      - name: Commit and push changes
-        uses: EndBug/add-and-commit@v7
-        with:
-          author_name: GitHub Actions
-          author_email: actions@github.com
-          message: Update out directory
-          add: out
-          force: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then 
+            mkdir build
+            cd ./build
+            cmake ..
+            make
+          elif [ "${{ matrix.os }}" == "windows-latest" ]; then 
+            mkdir build
+            cd ./build
+            cmake . -G “MinGW Makefiles
+            cmake --build .
+          elif [ "${{ matrix.os }}" == "macos-latest" ]; then 
+            mkdir build
+            cd ./build
+            cmake ..
+            make
+          fi
+         
