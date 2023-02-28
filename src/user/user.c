@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
 #include "main.h"
 
 void get_hidden_input(char *str, int max_length) {
@@ -59,8 +58,8 @@ int login()
         gets(ch1);
         printf("--------------------------------------------------\n");
         printf("password:\n");
-//        gets(pass1);
-        get_hidden_input(pass1, 15);
+        gets(pass1);
+//        get_hidden_input(pass1, 15);
         printf("--------------------------------------------------\n");
         printf("**************************************************\n\n\n");
 

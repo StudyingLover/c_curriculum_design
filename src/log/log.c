@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
 #include "main.h"
 void print_drug(struct drug d) {
 //    printf("%-10d%-20s%-10d\n", d.id, d.name, d.stock);
