@@ -6,6 +6,8 @@
 #include <string.h>
 #include "main.h"
 
+char users_config_path[100] = "E:\\college\\2023\\c_curriculum_design\\config\\users.txt";
+
 //void get_hidden_input(char *str, int max_length) {
 //    int i = 0;
 //    char ch;
@@ -27,6 +29,26 @@
 //    str[i] = '\0';
 //    putchar('\n');
 //}
+
+int cheak(char *account,char *password)
+{
+    FILE *fp = fopen(users_config_path, "r");
+    if (fp == NULL) {
+        printf("Error: Cannot open file.\n");
+        exit(1);
+    }
+
+    char line[100];
+    while (fgets(line, 100, fp) != NULL) {
+        char account1[50];
+        char password1[50];
+        sscanf(line, "%[^,],%[^,]", account1, password1);
+        if (strcmp(account, account1) == 0 && strcmp(password, password1) == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
 
 int login()
 {
@@ -63,7 +85,7 @@ int login()
         printf("--------------------------------------------------\n");
         printf("**************************************************\n\n\n");
 
-        if (strcmp("12345678", ch1) == 0 && strcmp("abc123", pass1) == 0)
+        if (strcmp(ch, ch1) == 0 && strcmp(pass, pass1) == 0)
         { // 两字符串相等时为0
             printf("password correct\n");
             system("cls");

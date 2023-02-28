@@ -1,4 +1,4 @@
-# 药店管理系统
+# 药店管理系统[readme.md](readme.md)
 
 ## 工具链
 cmake最低版本为**3.10**
@@ -17,6 +17,9 @@ cmake最低版本为**3.10**
 3. 在build文件夹下依次运行
    1. `cmake ..`
    2. `make`
+
+### macos
+**需要macos电脑支持**
 
 ## CI/CD
 coming

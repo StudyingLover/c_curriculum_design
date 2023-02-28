@@ -6,4 +6,5 @@
 #define C_CURRICULUM_DESIGN_COUNT_H
 #include "../main.h"
 int countMedicine(struct node * head);
+float countTotalValue(struct node* head);
 #endif //C_CURRICULUM_DESIGN_COUNT_H

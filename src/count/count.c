@@ -26,12 +26,12 @@ int countMedicine(struct node* head) {
 //    }
 //    return count;
 //}
-//float countTotalValue(struct Medicine* head) {
-//    float totalValue = 0.0;
-//    struct node* p = head;
-//    while (p != NULL) {
-//        totalValue += (p->price * p->quantity);
-//        p = p->next;
-//    }
-//    return totalValue;
-//}
+float countTotalValue(struct node* head) {
+    float totalValue = 0.0;
+    struct node* p = head;
+    while (p != NULL) {
+        totalValue += (p->data.price * p->data.stock);
+        p = p->next;
+    }
+    return totalValue;
+}

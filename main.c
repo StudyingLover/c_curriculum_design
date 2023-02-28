@@ -67,7 +67,8 @@ int main() {
     t = login();
     if (t == 1)
     {
-        printf("您已经连续三次输入错误，程序退出。");
+//        printf("您已经连续三次输入错误，程序退出。");
+        printf("you have entered the wrong password for three times, the program will exit.");
         return 0;
     }
 
@@ -149,7 +150,8 @@ int main() {
             drug_sort(head);
         }
         else if(option == 7) {
-            printf("%d\n", countMedicine( head ));
+            printf("total:%d\n", countMedicine( head ));
+            printf("total price:%.2f\n", countTotalValue( head ));
         }
         else if(option == 8) {
             printf("Bye!\n");

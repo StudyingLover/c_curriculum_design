@@ -6,4 +6,5 @@
 #define C_CURRICULUM_DESIGN_USER_H
 void get_hidden_input(char *str, int max_length);
 int login();
+int cheak(char *account,char *password);
 #endif //C_CURRICULUM_DESIGN_USER_H
