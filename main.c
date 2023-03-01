@@ -10,12 +10,15 @@
 #include "actions/delete.h"
 #include "actions/modify.h"
 #include "actions/sort.h"
+#include "actions/insert.h"
 
 char config_path[100] = "E:\\college\\2023\\c_curriculum_design\\config\\drugs.txt";
 
-struct node *read_from_file() {
+struct node *read_from_file()
+{
     FILE *fp = fopen(config_path, "r");
-    if (fp == NULL) {
+    if (fp == NULL)
+    {
         printf("Error: Cannot open file.\n");
         exit(1);
     }
@@ -24,18 +27,22 @@ struct node *read_from_file() {
     struct node *tail = NULL;
 
     char line[100];
-    while (fgets(line, 100, fp) != NULL) {
+    while (fgets(line, 100, fp) != NULL)
+    {
         struct drug new_drug;
         sscanf(line, "%d,%[^,],%[^,],%f,%d,%[^,],%[^,],%[^,]", &new_drug.id, new_drug.name,
-                   new_drug.type, &new_drug.price, &new_drug.stock, new_drug.production_date, new_drug.expiration_date, new_drug.manufacturer);
-        struct node *new_node = (struct node*)malloc(sizeof(struct node));
+               new_drug.type, &new_drug.price, &new_drug.stock, new_drug.production_date, new_drug.expiration_date, new_drug.manufacturer);
+        struct node *new_node = (struct node *)malloc(sizeof(struct node));
         new_node->data = new_drug;
         new_node->next = NULL;
 
-        if (head == NULL) {
+        if (head == NULL)
+        {
             head = new_node;
             tail = new_node;
-        } else {
+        }
+        else
+        {
             tail->next = new_node;
             tail = new_node;
         }
@@ -45,15 +52,18 @@ struct node *read_from_file() {
     return head;
 }
 
-void save_to_file(struct node *head) {
+void save_to_file(struct node *head)
+{
     FILE *fp = fopen(config_path, "w");
-    if (fp == NULL) {
+    if (fp == NULL)
+    {
         printf("Error: Cannot open file.\n");
         exit(1);
     }
 
     struct node *current = head;
-    while (current != NULL) {
+    while (current != NULL)
+    {
         fprintf(fp, "%d,%s,%s,%.2f,%d,%s,%s,%s", current->data.id, current->data.name,
                 current->data.type, current->data.price, current->data.stock, current->data.production_date, current->data.expiration_date, current->data.manufacturer);
         current = current->next;
@@ -62,19 +72,21 @@ void save_to_file(struct node *head) {
     fclose(fp);
 }
 
-int main() {
+int main()
+{
     int t;
     t = login();
     if (t == 1)
     {
-//        printf("ÄúÒÑ¾­Á¬ÐøÈý´ÎÊäÈë´íÎó£¬³ÌÐòÍË³ö¡£");
+        //        printf("ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬³ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½");
         printf("you have entered the wrong password for three times, the program will exit.");
         return 0;
     }
 
     struct node *head = read_from_file();
     int option = 0;
-    while (option != 8) {
+    while (option != 8)
+    {
         printf("Please select an option:\n");
         printf("1. Add a new drug\n");
         printf("2. Modify an existing drug\n");
@@ -83,11 +95,13 @@ int main() {
         printf("5. Search\n");
         printf("6. Sort\n");
         printf("7. Statistics\n");
-        printf("8. Quit\n");
+        printf("8.insert\n");
+        printf("9. Quit\n");
 
         scanf("%d", &option);
 
-        if (option == 1) {
+        if (option == 1)
+        {
             add_drug(&head);
             int save_option = 0;
             printf("Save changes to file?\n");
@@ -95,11 +109,13 @@ int main() {
             printf("2. No\n");
             scanf("%d", &save_option);
 
-            if (save_option == 1) {
+            if (save_option == 1)
+            {
                 save_to_file(head);
             }
         }
-        else if (option == 2) {
+        else if (option == 2)
+        {
             modify_drug(head);
             int save_option = 0;
             printf("Save changes to file?\n");
@@ -107,37 +123,42 @@ int main() {
             printf("2. No\n");
             scanf("%d", &save_option);
 
-            if (save_option == 1) {
+            if (save_option == 1)
+            {
                 save_to_file(head);
             }
         }
-        else if (option == 3) {
+        else if (option == 3)
+        {
             struct node *current = head;
-            while (current != NULL) {
+            while (current != NULL)
+            {
                 print_drug(current->data);
                 printf("\n");
                 current = current->next;
             }
         }
-        else if(option == 4) {
+        else if (option == 4)
+        {
             int delete_id;
-//            scanf("input the id of you want to delete:%d", &delete_id);
-//            printf("test");
+            //            scanf("input the id of you want to delete:%d", &delete_id);
+            //            printf("test");
             scanf("%d", &delete_id);
             printf("%d\n", delete_id);
             delete_drug(&head, delete_id);
         }
-        else if(option == 5) {
+        else if (option == 5)
+        {
             int search_option = 0;
             printf("Choose a search criteria:\n");
             printf("1. Simple search\n");
             printf("2. Complex search\n");
             scanf("%d", &search_option);
-            if(search_option == 1)
+            if (search_option == 1)
             {
                 search(head);
             }
-            else if(search_option == 2)
+            else if (search_option == 2)
             {
                 search_complex(head);
             }
@@ -146,18 +167,28 @@ int main() {
                 printf("Invalid option. Please try again.\n");
             }
         }
-        else if(option == 6) {
+        else if (option == 6)
+        {
             drug_sort(head);
         }
-        else if(option == 7) {
-            printf("total:%d\n", countMedicine( head ));
-            printf("total price:%.2f\n", countTotalValue( head ));
+        else if (option == 7)
+        {
+            printf("total:%d\n", countMedicine(head));
+            printf("total price:%.2f\n", countTotalValue(head));
         }
-        else if(option == 8) {
+        else if (option == 8)
+        {
+            int insert_id;
+            scanf("%d", &insert_id);
+            insert_drug(head, insert_id);
+        }
+        else if (option == 9)
+        {
             printf("Bye!\n");
         }
 
-        else {
+        else
+        {
             printf("Invalid option. Please try again.\n");
         }
 

@@ -13,6 +13,7 @@ add_library(add src/actions/add.c)
 add_library(delete src/actions/delete.c)
 add_library(modify src/actions/modify.c)
 add_library(sort src/actions/sort.c)
+add_library(insert src/actions/insert.c)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -27,3 +28,4 @@ target_link_libraries(c_curriculum_design add)
 target_link_libraries(c_curriculum_design delete)
 target_link_libraries(c_curriculum_design modify)
 target_link_libraries(c_curriculum_design sort)
+target_link_libraries(c_curriculum_design insert)
