@@ -8,7 +8,7 @@ cmake最低版本为**3.10**
 1. 将main.c的config_path改为自己的绝对路径
 2. 新建build文件夹并进入`mkdir build && cd ./build`
 3. 在build文件夹下依次运行
-   1. `cmake . -G “MinGW Makefiles`
+   1. `cmake .. -G "MinGW Makefiles"`
    2. `cmake --build .`
 
 ### linux(Ubuntu)

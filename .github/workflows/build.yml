@@ -30,7 +30,7 @@ jobs:
           elif [ "${{ matrix.os }}" == "windows-latest" ]; then 
             mkdir build
             cd ./build
-            cmake . -G “MinGW Makefiles
+            cmake .. -G "MinGW Makefiles"
             cmake --build .
           elif [ "${{ matrix.os }}" == "macos-latest" ]; then 
             mkdir build
