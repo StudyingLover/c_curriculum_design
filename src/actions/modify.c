@@ -16,7 +16,8 @@ void modify_drug(struct node *head) {
             printf("Enter the new name of the drug: ");
             scanf("%s", current->data.name);
 
-            printf("Enter the new type of the drug: ");
+            printf("Enter the new type of the drug: \n");
+            printf("1 means prescription drugs , and 2 means OTC(over-the-counter drugs)");
             scanf("%s", current->data.type);
 
             printf("Enter the new price of the drug: ");
@@ -24,10 +25,11 @@ void modify_drug(struct node *head) {
             printf("Enter the new stock of the drug: ");
             scanf("%d", &current->data.stock);
 
-            printf("Enter the new production date of the drug: ");
+            printf("Enter the new production date of the drug: \n");
+            printf("the format of date is YYYY-MM-DD ,for example ,2022-03-02");
             scanf("%s", current->data.production_date);
 
-            printf("Enter the new expiration date of the drug: ");
+            printf("Enter the new expiration date of the drug(days): ");
             scanf("%s", current->data.expiration_date);
 
             printf("Enter the new manufacturer of the drug: ");

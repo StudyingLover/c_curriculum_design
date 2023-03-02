@@ -16,7 +16,8 @@ void insert_drug(struct node **head , int last_id)
     printf("Enter drug name: ");
     scanf("%s", new_drug.name);
 
-    printf("Enter drug type: ");
+    printf("Enter drug type: \n");
+    printf("1 means prescription drugs , and 2 means OTC(over-the-counter drugs)");
     scanf("%s", new_drug.type);
 
     printf("Enter drug price: ");
@@ -25,7 +26,8 @@ void insert_drug(struct node **head , int last_id)
     printf("Enter drug stock: ");
     scanf("%d", &new_drug.stock);
 
-    printf("Enter drug production date: ");
+    printf("Enter drug production date: \n");
+    printf("the format of date is YYYY-MM-DD ,for example ,2022-03-02");
     scanf("%s", new_drug.production_date);
 
     printf("Enter drug expiration date: ");

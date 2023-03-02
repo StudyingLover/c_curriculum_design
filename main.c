@@ -12,11 +12,11 @@
 #include "actions/sort.h"
 #include "actions/insert.h"
 
-char config_path[100] = "E:\\college\\2023\\c_curriculum_design\\config\\drugs.txt";
+char config_path[100] = "../config/drugs.txt";
 
 struct node *read_from_file()
 {
-    FILE *fp = fopen(config_path, "r");
+    FILE *fp = fopen(config_path, "r+");
     if (fp == NULL)
     {
         printf("Error: Cannot open file.\n");
@@ -29,7 +29,10 @@ struct node *read_from_file()
     char line[100];
     while (fgets(line, 100, fp) != NULL)
     {
+        printf("len:%d  ,  %s",strlen(line),line);
         struct drug new_drug;
+        if(strlen(line) == 1)
+            continue;
         sscanf(line, "%d,%[^,],%[^,],%f,%d,%[^,],%[^,],%[^,]", &new_drug.id, new_drug.name,
                new_drug.type, &new_drug.price, &new_drug.stock, new_drug.production_date, new_drug.expiration_date, new_drug.manufacturer);
         struct node *new_node = (struct node *)malloc(sizeof(struct node));
@@ -54,7 +57,7 @@ struct node *read_from_file()
 
 void save_to_file(struct node *head)
 {
-    FILE *fp = fopen(config_path, "w");
+    FILE *fp = fopen(config_path, "w+");
     if (fp == NULL)
     {
         printf("Error: Cannot open file.\n");
@@ -84,8 +87,8 @@ int main()
     }
 
     struct node *head = read_from_file();
-    int option = 0;
-    while (option != 8)
+    int option = -1;
+    while (option != 0)
     {
         printf("Please select an option:\n");
         printf("1. Add a new drug\n");
@@ -95,8 +98,9 @@ int main()
         printf("5. Search\n");
         printf("6. Sort\n");
         printf("7. Statistics\n");
-        printf("8.insert\n");
-        printf("9. Quit\n");
+        printf("8. insert\n");
+//        printf("9. Get Expiration Date\n");
+        printf("0. Quit\n");
 
         scanf("%d", &option);
 
@@ -180,9 +184,9 @@ int main()
         {
             int insert_id;
             scanf("%d", &insert_id);
-            insert_drug(head, insert_id);
+            insert_drug(&head, insert_id);
         }
-        else if (option == 9)
+        else if (option == 0)
         {
             printf("Bye!\n");
         }

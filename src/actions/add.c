@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "main.h"
+#include "date/date.h"
 void add_drug(struct node **head) {
     struct drug new_drug;
 
@@ -14,7 +15,8 @@ void add_drug(struct node **head) {
     printf("Enter drug name: ");
     scanf("%s", new_drug.name);
 
-    printf("Enter drug type: ");
+    printf("Enter drug type: \n");
+    printf("1 means prescription drugs , and 2 means OTC(over-the-counter drugs)");
     scanf("%s", new_drug.type);
 
     printf("Enter drug price: ");
@@ -23,10 +25,11 @@ void add_drug(struct node **head) {
     printf("Enter drug stock: ");
     scanf("%d", &new_drug.stock);
 
-    printf("Enter drug production date: ");
+    printf("Enter drug production date: \n");
+    printf("the format of date is YYYY-MM-DD ,for example ,2022-03-02");
     scanf("%s", new_drug.production_date);
 
-    printf("Enter drug expiration date: ");
+    printf("Enter drug expiration date(days): ");
     scanf("%s", new_drug.expiration_date);
 
     printf("Enter drug manufacturer: ");
