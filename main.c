@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "main.h"
-#include "count/count.h"
-#include "search/search.h"
+#include "actions/count.h"
+#include "actions/search.h"
 #include "log/log.h"
 #include "user/user.h"
 #include "actions/add.h"
@@ -29,7 +29,7 @@ struct node *read_from_file()
     char line[100];
     while (fgets(line, 100, fp) != NULL)
     {
-        printf("len:%d  ,  %s",strlen(line),line);
+        // printf("len:%d  ,  %s",strlen(line),line);
         struct drug new_drug;
         if(strlen(line) == 1)
             continue;
@@ -67,7 +67,7 @@ void save_to_file(struct node *head)
     struct node *current = head;
     while (current != NULL)
     {
-        fprintf(fp, "%d,%s,%s,%.2f,%d,%s,%s,%s", current->data.id, current->data.name,
+        fprintf(fp, "%d,%s,%s,%.2f,%d,%s,%s,%s\n", current->data.id, current->data.name,
                 current->data.type, current->data.price, current->data.stock, current->data.production_date, current->data.expiration_date, current->data.manufacturer);
         current = current->next;
     }

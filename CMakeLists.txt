@@ -5,8 +5,8 @@ project(c_curriculum_design)
 include_directories(include)
 
 # 添加源文件
-add_library(count src/count/count.c)
-add_library(search src/search/search.c)
+add_library(count src/actions/count.c)
+add_library(search src/actions/search.c)
 add_library(log src/log/log.c)
 add_library(login src/user/user.c)
 add_library(add src/actions/add.c)
