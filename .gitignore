@@ -7,3 +7,5 @@ test.c
 temp.c
 config
 readme.pdf
+data/
+config/

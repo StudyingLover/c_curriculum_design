@@ -6,7 +6,7 @@
 #include <string.h>
 #include "main.h"
 
-char users_config_path[100] = "E:\\college\\2023\\c_curriculum_design\\config\\users.txt";
+extern char users_config_path[100];
 
 //void get_hidden_input(char *str, int max_length) {
 //    int i = 0;
