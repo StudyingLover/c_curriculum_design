@@ -12,7 +12,9 @@
 #include "actions/sort.h"
 #include "actions/insert.h"
 
-char config_path[100] = "../config/drugs.txt";
+//将这两个路径根据自己的情况换成drugs.txt和user.txt所在的绝对路径
+char config_path[100] = "D:\\Proj\\c_curriculum_design\\data\\drugs.txt";
+char users_config_path[100] = "D:\\Proj\\c_curriculum_design\\config\\user.txt";
 
 struct node *read_from_file()
 {
